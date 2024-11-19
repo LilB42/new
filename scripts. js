@@ -1,7 +1,7 @@
 // scripts.js
 document.getElementById('career-quiz-form').addEventListener('submit', function(event) {
-    event.preventDefault();
-    
+    event.preventDefault(); // Prevent form from refreshing the page
+
     // Collect the answers from the form
     const environment = document.querySelector('input[name="environment"]:checked');
     const teamwork = document.querySelector('input[name="teamwork"]:checked');
@@ -28,7 +28,31 @@ document.getElementById('career-quiz-form').addEventListener('submit', function(
         jobRecommendation = 'Job Recommendations: Medical Social Worker, Healthcare Administrator, Registered Nurse';
     } else if (environment.value === 'remote' && teamwork.value === 'no' && skills.value === 'technical' && impact.value === 'innovation' && industry.value === 'technology') {
         result = 'A career in Software Development, Data Science, or Cybersecurity might suit you.';
-        jobRecommendation = 'Job Recommendations: Software Developer
+        jobRecommendation = 'Job Recommendations: Software Developer, Data Scientist, Cybersecurity Specialist';
+    } else if (environment.value === 'outdoor' && teamwork.value === 'no' && skills.value === 'technical' && impact.value === 'helping' && industry.value === 'environment') {
+        result = 'Consider careers like Environmental Science, Landscape Architecture, or Outdoor Education.';
+        jobRecommendation = 'Job Recommendations: Environmental Scientist, Landscape Architect, Outdoor Educator';
+    } else if (industry.value === 'arts' && skills.value === 'creative' && jobStyle.value === 'flexible' && motivation.value === 'passion') {
+        result = 'You may thrive in a career in Graphic Design, Photography, or Freelance Writing.';
+        jobRecommendation = 'Job Recommendations: Graphic Designer, Freelance Photographer, Freelance Writer';
+    } else if (jobStyle.value === 'routine' && motivation.value === 'financial' && jobSatisfaction.value === 'achievement') {
+        result = 'Consider careers in Finance, Accounting, or Project Management.';
+        jobRecommendation = 'Job Recommendations: Financial Analyst, Accountant, Project Manager';
+    } else {
+        result = 'Based on your answers, a flexible career path like Consulting, Freelancing, or Entrepreneurship could be a good fit.';
+        jobRecommendation = 'Job Recommendations: Consultant, Freelancer, Entrepreneur';
+    }
+
+    // Show the result and hide the quiz form
+    document.getElementById('quiz-container').style.display = 'none';  // Hide the quiz
+    const resultContainer = document.getElementById('result-container');
+    resultContainer.style.display = 'block';  // Show the result
+
+    // Display the result and job recommendations
+    document.getElementById('result').innerHTML = `${result}<br><strong>${jobRecommendation}</strong>`;
+});
+
+       
 
 
 
